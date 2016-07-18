@@ -101,9 +101,9 @@ curl -X GET 'http://127.0.0.1:8000/manager/contact/1' -H "W-Token: iamjon"
 
 The entirety of the code for the API is in \src\AppBundle\Controller\ShiftController.php
 
-Oro Doctrine Extensions (https://github.com/orocrm/doctrine-extension) is installed to allow the use of TIMESTAMPDIFF in Doctrine.
-
 The ORM is at \src\AppBundle\Entity
+
+Oro Doctrine Extensions (https://github.com/orocrm/doctrine-extension) is installed to allow the use of TIMESTAMPDIFF in Doctrine.
 
 The sql for the database is in worksched.sql
 
