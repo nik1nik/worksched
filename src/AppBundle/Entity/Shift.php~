@@ -1,0 +1,68 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Shift
+ *
+ * @ORM\Table(name="shift")
+ * @ORM\Entity
+ */
+class Shift
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="manager_id", type="integer", nullable=false)
+     */
+    private $managerId;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="break", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $break;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_time", type="datetime", nullable=false)
+     */
+    private $startTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_time", type="datetime", nullable=false)
+     */
+    private $endTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+
+}
+

@@ -1,0 +1,54 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ShiftAssignment
+ *
+ * @ORM\Table(name="shift_assignment")
+ * @ORM\Entity
+ */
+class ShiftAssignment
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="shift_id", type="integer", nullable=false)
+     */
+    private $shiftId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="employee_id", type="integer", nullable=true)
+     */
+    private $employeeId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+
+}
+
