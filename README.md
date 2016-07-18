@@ -106,4 +106,5 @@ Oro Doctrine Extensions (https://github.com/orocrm/doctrine-extension) is instal
 The ORM is at \src\AppBundle\Entity
 
 The sql for the database is in worksched.sql
+
 # worksched
