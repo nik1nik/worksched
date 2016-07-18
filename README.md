@@ -56,37 +56,48 @@ For example: curl -X GET 'http://127.0.0.1:8000/employee/when' -H "W-Token: iama
 
 These are some test cases from the console for the stories
 - [ ] As an employee, I want to know when I am working, by being able to see all of the shifts assigned to me.
+
 curl -X GET 'http://127.0.0.1:8000/employee/when' -H "W-Token: iamarya"
 
-- [ ] As an employee, I want to know who I am working with, by being able to see the employees that are working during the same time period as me.
+- [ ] As an employee, I want to know who I am working with, by being able to see the employees that are working during the same time period as me. The shift Id is passed by appending it to the end of the URL.
+
 curl -X GET 'http://127.0.0.1:8000/employee/who/1' -H "W-Token: iamarya"
-The shift Id is passed by appending it to the end of the URL
+
 
 - [ ] As an employee, I want to know how much I worked, by being able to get a summary of hours worked for each week.
+
 curl -X GET 'http://127.0.0.1:8000/employee/worked?start=2016-07-17%2000:00:00&end=2016-07-23%2023:59:59' -H "W-Token: iamarya"
 
-- [ ] As an employee, I want to be able to contact my managers, by seeing manager contact information for my shifts.
+- [ ] As an employee, I want to be able to contact my managers, by seeing manager contact information for my shifts. The shift Id is passed by appending it to the end of the URL.
+
 curl -X GET 'http://127.0.0.1:8000/employee/contact/1' -H "W-Token: iamarya"
-The shift Id is passed by appending it to the end of the URL
+
 
 - [ ] As a manager, I want to schedule my employees, by creating shifts for any employee.
-curl -X PUT -d manager_id=3 -d employee_id=6 -d break_time=0.5 -d start='2016-07-24 02:00:00' -d end='2016-07-24 10:00:00' http://127.0.0.1:8000/manager/schedule -H "W-Token: iamjon"
 If manager Id is blank, the manager Id(from the token) that created the shift will be used.
-PUT is used as the shift or shift assignemnt may be created or updated
+PUT is used as the shift or shift assignemnt may be created or updated.
+
+curl -X PUT -d manager_id=3 -d employee_id=6 -d break_time=0.5 -d start='2016-07-24 02:00:00' -d end='2016-07-24 10:00:00' http://127.0.0.1:8000/manager/schedule -H "W-Token: iamjon"
+
 
 - [ ] As a manager, I want to see the schedule, by listing shifts within a specific time period.
+
 curl -X GET 'http://127.0.0.1:8000/manager/shift?start=2016-07-17%2000:00:00&end=2016-07-29%2023:59:59' -H "W-Token: iamjon"
 
-- [ ] As a manager, I want to be able to change a shift, by updating the time details.
-curl -X PUT -d shift_id=4 -d start='2016-07-17 10:00:00' -d end='2016-07-17 18:00:00' http://127.0.0.1:8000/manager/change -H "W-Token: iamjon"
-PUT is used as this is used to update
+- [ ] As a manager, I want to be able to change a shift, by updating the time details. PUT is used as this is used to update.
 
-- [ ] As a manager, I want to be able to assign a shift, by changing the employee that will work a shift.
+curl -X PUT -d shift_id=4 -d start='2016-07-17 10:00:00' -d end='2016-07-17 18:00:00' http://127.0.0.1:8000/manager/change -H "W-Token: iamjon"
+
+
+- [ ] As a manager, I want to be able to assign a shift, by changing the employee that will work a shift.PUT is used as shift assignment may be created or updated.
+
 curl -X PUT -d shift_id=7 -d current_employee_id=1 -d new_employee_id=6 http://127.0.0.1:8000/manager/assign -H "W-Token: iamjon"
-PUT is used as shift assignemnt may be created or updated
+
 
 - [ ] As a manager, I want to contact an employee, by seeing employee details.
+
 curl -X GET 'http://127.0.0.1:8000/manager/contact/1' -H "W-Token: iamjon"
+
 
 The entirety of the code for the API is in \src\AppBundle\Controller\ShiftController.php
 
@@ -95,3 +106,4 @@ Oro Doctrine Extensions (https://github.com/orocrm/doctrine-extension) is instal
 The ORM is at \src\AppBundle\Entity
 
 The sql for the database is in worksched.sql
+# worksched
